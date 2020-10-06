@@ -1,0 +1,20 @@
+{
+  "name": "gyramais",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Letícia Marinho",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.5.2",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0"
+  }
+}
