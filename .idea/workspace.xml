@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37ff0b5f-d124-4c8f-a150-07b69c5c9da0" name="Default Changelist" comment="" />
+    <list default="true" id="37ff0b5f-d124-4c8f-a150-07b69c5c9da0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +38,7 @@
       <updated>1602002649569</updated>
       <workItem from="1602002650628" duration="3187000" />
       <workItem from="1602010535740" duration="6623000" />
-      <workItem from="1602017406688" duration="1970000" />
+      <workItem from="1602017406688" duration="21786000" />
     </task>
     <servers />
   </component>
@@ -48,6 +50,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="417" y="168" width="540" height="385" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1602006096129" />
+    <state x="416" y="113" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602028829431">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="416" y="113" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602028829431" />
     <state x="466" y="121" width="424" height="479" key="FileChooserDialogImpl" timestamp="1602006702244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
