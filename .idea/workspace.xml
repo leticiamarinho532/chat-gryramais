@@ -3,6 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="37ff0b5f-d124-4c8f-a150-07b69c5c9da0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.turtle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.turtle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTigerHS.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTigerHS.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/_mdb_catalog.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/_mdb_catalog.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-0--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-0--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-2--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-2--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-4--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-4--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-5--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-5--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-1--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-1--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-3--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-3--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-6--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-6--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-7--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-7--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-8--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-8--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-9--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-9--3906706169995930696.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/mongod.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/mongod.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/sizeStorer.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/sizeStorer.wt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/resolver/messageResolver.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/resolver/messageResolver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/schema/messageSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/schema/messageSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +59,9 @@
       <updated>1602002649569</updated>
       <workItem from="1602002650628" duration="3187000" />
       <workItem from="1602010535740" duration="6623000" />
-      <workItem from="1602017406688" duration="21786000" />
+      <workItem from="1602017406688" duration="22411000" />
+      <workItem from="1602085855081" duration="44000" />
+      <workItem from="1602085902062" duration="18105000" />
     </task>
     <servers />
   </component>
@@ -46,17 +69,17 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="417" y="168" width="540" height="385" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602006096129">
+    <state x="417" y="168" width="540" height="385" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602086423904">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="417" y="168" width="540" height="385" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1602006096129" />
+    <state x="417" y="168" width="540" height="385" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1602086423904" />
     <state x="416" y="113" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602028829431">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="416" y="113" width="524" height="495" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1602028829431" />
-    <state x="466" y="121" width="424" height="479" key="FileChooserDialogImpl" timestamp="1602006702244">
+    <state x="466" y="121" width="424" height="479" key="FileChooserDialogImpl" timestamp="1602085897557">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="466" y="121" width="424" height="479" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602006702244" />
+    <state x="466" y="121" width="424" height="479" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602085897557" />
   </component>
 </project>
