@@ -23,6 +23,7 @@ services:
       - 27017:27017
     volumes:
       - ./.docker/dbdata:/data/db
+#    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: secret

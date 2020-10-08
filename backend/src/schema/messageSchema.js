@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
     type Query {
-        messages: [Message]!
+        messages(page: Int, limit: Int): MessageResult!
     }
     
     type Mutation {
@@ -11,6 +11,12 @@ const typeDefs = gql`
     
     type Subscription {
         sentMessage: Message
+    }
+    
+    type MessageResult{
+        currentPage: String!
+        totalPages: Boolean!
+        messages: [Message]!
     }
     
     type Message {

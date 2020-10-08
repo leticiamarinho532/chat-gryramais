@@ -3,14 +3,24 @@ const { AuthenticationError } = require('apollo-server');
 
 module.exports = {
     Query: {
-        messages: async (parent, args, { models, user }, info) => {
+        messages: async (parent, args , { models, user }, info) => {
             if (!user) {
                 throw new AuthenticationError('Not Authorized');
             }
 
-            const messages = await models.message.find({});
+            const { page = 1, limit = 20 } = args;
 
-            return messages;
+            const messages = await models.message.find({}).limit(limit).skip((page - 1) * limit).lean();;
+
+            const count = await models.message.countDocuments(messages);
+
+            console.log(messages);
+
+            return {
+                currentPage: page,
+                totalPages: Math.ceil(count / limit),
+                messages
+            };
         }
     },
 
