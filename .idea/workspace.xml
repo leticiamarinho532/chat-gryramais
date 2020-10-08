@@ -5,25 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.turtle" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.turtle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTiger.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTigerHS.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/WiredTigerHS.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/_mdb_catalog.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/_mdb_catalog.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-0--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-0--3906706169995930696.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-2--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-2--3906706169995930696.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-4--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-4--3906706169995930696.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/collection-5--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/collection-5--3906706169995930696.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-1--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-1--3906706169995930696.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-3--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-3--3906706169995930696.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-6--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-6--3906706169995930696.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-7--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-7--3906706169995930696.wt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-8--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-8--3906706169995930696.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/index-9--3906706169995930696.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/index-9--3906706169995930696.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/mongod.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/mongod.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/.docker/dbdata/sizeStorer.wt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/dbdata/sizeStorer.wt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/resolver/messageResolver.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/resolver/messageResolver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/schema/messageSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/schema/messageSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +49,7 @@
       <workItem from="1602010535740" duration="6623000" />
       <workItem from="1602017406688" duration="22411000" />
       <workItem from="1602085855081" duration="44000" />
-      <workItem from="1602085902062" duration="18105000" />
+      <workItem from="1602085902062" duration="22956000" />
     </task>
     <servers />
   </component>
