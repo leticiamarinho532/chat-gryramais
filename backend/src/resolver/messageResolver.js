@@ -1,4 +1,6 @@
 const CHAT_CHANNEL = "CHAT_CHANNEL";
+const USER_CHANNEL = "USER_CHANNEL";
+
 const { AuthenticationError } = require('apollo-server');
 
 module.exports = {
@@ -13,8 +15,6 @@ module.exports = {
             const messages = await models.message.find({}).limit(limit).skip((page - 1) * limit).lean();;
 
             const count = await models.message.countDocuments(messages);
-
-            console.log(messages);
 
             return {
                 currentPage: page,
@@ -37,17 +37,40 @@ module.exports = {
             await pubsub.publish(CHAT_CHANNEL, { sentMessage: message });
 
             return message;
+
+        },
+
+        loggedInUser: async(parent, args, { user, pubsub }, info) => {
+            await pubsub.publish(USER_CHANNEL, { loggedUser: user });
+
+            return user;
+        },
+
+        loggedOutUser: async(parent, args, { user, pubsub }, info) => {
+            return user;
         }
+
     },
 
     Subscription: {
         sentMessage: {
-            subscribe: (parent, args, { pubsub}, info) => {
-                // if (!user) {
-                //     throw new AuthenticationError('Not Authorized');
-                // }
+            subscribe: (parent, args, { pubsub , user}, info) => {
+                if (!user) {
+                    throw new AuthenticationError('Not Authorized');
+                }
 
                 return pubsub.asyncIterator([CHAT_CHANNEL]);
+            }
+        },
+
+        loggedUser: {
+            subscribe: (parent, args, { pubsub , user }, info) => {
+                if (!user) {
+                    throw new AuthenticationError('Not Authorized');
+                }
+
+                return pubsub.asyncIterator([USER_CHANNEL]);
+
             }
         }
     }

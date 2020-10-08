@@ -7,10 +7,17 @@ const typeDefs = gql`
     
     type Mutation {
         createMessage(SendMessageInput: SendMessageInput!): Message!
+        loggedInUser: User!
+        loggedOutUser: User!
     }
     
     type Subscription {
-        sentMessage: Message
+        sentMessage: Message!
+        loggedUser: User!
+    }
+    
+    type User {
+        nickname: String!
     }
     
     type MessageResult{

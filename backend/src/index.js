@@ -5,6 +5,8 @@ const messageSchema = require('./schema/messageSchema');
 const messageResolver = require('./resolver/messageResolver');
 const models = require('./model');
 
+const CHAT_CHANNEL = "CHAT_CHANNEL";
+
 const pubsub = new PubSub();
 
 mongoose.connect(
@@ -39,6 +41,23 @@ const server = new ApolloServer({
             models,
             pubsub,
             user: await getUser(req, connection)
+        }
+    },
+    subscriptions: {
+        onConnect: (connectionParams, webSocket) => {
+
+            console.log('user connect');
+
+            if (!connectionParams.nickname) {
+                throw new AuthenticationError('Not Autorized');
+            }
+
+            return {
+                user: connectionParams.nickname
+            };
+        },
+        onDisconnect: (webSocket, context) => {
+            console.log('user disconnect');
         }
     }
 });
