@@ -34,6 +34,9 @@ module.exports = {
 
             const message = await models.message.create({ content, user: user.nickname, created_at: new Date() });
 
+            // console.log('message: ');
+            // console.log(message);
+
             await pubsub.publish(CHAT_CHANNEL, { message: message });
 
             return message;

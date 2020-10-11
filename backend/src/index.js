@@ -44,18 +44,34 @@ const server = new ApolloServer({
         }
     },
     subscriptions: {
-        onConnect: (connectionParams, webSocket) => {
+        onConnect: async (connectionParams, webSocket) => {
 
             if (!connectionParams.nickname) {
                 throw new AuthenticationError('Not Autorized');
             }
 
+            const message = {
+                event: 'UserloggedIn',
+                user: connectionParams.nickname
+            }
+
+            await pubsub.publish('CHAT_CHANNEL', { message: message });
+
             return {
                 user: connectionParams.nickname
             };
         },
-        onDisconnect: (webSocket, context) => {
-            console.log('user disconnect');
+        onDisconnect: async (webSocket, context) => {
+
+            const user = await context.initPromise;
+
+            const message = {
+                event: 'UsserloggeOut',
+                user: user.user
+            }
+
+            await pubsub.publish('CHAT_CHANNEL', { message: message });
+
         }
     }
 });

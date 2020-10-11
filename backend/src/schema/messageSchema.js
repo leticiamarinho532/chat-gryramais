@@ -33,6 +33,7 @@ const typeDefs = gql`
     type Message {
         id: ID!
         content: String!
+        event: String!
         user: String!
         created_at: String!
     }
