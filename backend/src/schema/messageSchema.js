@@ -12,11 +12,15 @@ const typeDefs = gql`
     }
     
     type Subscription {
-        sentMessage: Message!
+        message: Message!
         loggedUser: User!
     }
     
     type User {
+        nickname: String!
+    }
+    
+    input getUser {
         nickname: String!
     }
     

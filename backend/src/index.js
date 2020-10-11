@@ -46,8 +46,6 @@ const server = new ApolloServer({
     subscriptions: {
         onConnect: (connectionParams, webSocket) => {
 
-            console.log('user connect');
-
             if (!connectionParams.nickname) {
                 throw new AuthenticationError('Not Autorized');
             }

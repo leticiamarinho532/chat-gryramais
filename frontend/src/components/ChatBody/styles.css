@@ -1,0 +1,31 @@
+.component-chat-body {
+    text-align: center;
+    /*border: 1px solid #6C6C80;*/
+    border-radius: 8px;
+    height: 500px;
+    width: 500px;
+}
+
+.component-chat-body #header {
+    text-align: center;
+    /*background-color: #FFFFFF;*/
+    border-radius: 8px;
+}
+
+.component-chat-body #body {
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    height: 400px;
+}
+
+.component-chat-body #footer {
+    display: flex;
+    align-items: flex-end;
+}
+
+.component-chat-body #footer textarea {
+    width: 80%;
+    border: none;
+    border-radius: 8px;
+}

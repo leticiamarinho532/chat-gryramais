@@ -1,7 +1,7 @@
 const CHAT_CHANNEL = "CHAT_CHANNEL";
 const USER_CHANNEL = "USER_CHANNEL";
 
-const { AuthenticationError } = require('apollo-server');
+const { AuthenticationError, withFilter } = require('apollo-server');
 
 module.exports = {
     Query: {
@@ -34,7 +34,7 @@ module.exports = {
 
             const message = await models.message.create({ content, user: user.nickname, created_at: new Date() });
 
-            await pubsub.publish(CHAT_CHANNEL, { sentMessage: message });
+            await pubsub.publish(CHAT_CHANNEL, { message: message });
 
             return message;
 
@@ -53,14 +53,20 @@ module.exports = {
     },
 
     Subscription: {
-        sentMessage: {
-            subscribe: (parent, args, { pubsub , user}, info) => {
+        message: {
+            subscribe: async (parent, args, { pubsub , user}, info) => {
                 if (!user) {
                     throw new AuthenticationError('Not Authorized');
                 }
 
                 return pubsub.asyncIterator([CHAT_CHANNEL]);
             }
+            // subscribe: withFilter((parent, args, { pubsub , user}, info) => pubsub.asyncIterator([CHAT_CHANNEL]),
+            //     (payload, variables) => {
+            //         console.log(variables.nickname);
+            //         return payload.message.user === variables.user;
+            //         },
+            //     ),
         },
 
         loggedUser: {
