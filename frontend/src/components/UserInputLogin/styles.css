@@ -11,6 +11,7 @@
     max-width: 360px;
     height: 30px;
     background: var(--primary-color);
+    border: 0;
     border-radius: 8px;
     text-decoration: none;
     overflow: hidden;
@@ -22,49 +23,6 @@
 #component-form-user button:hover {
     background:  #007d70;
 }
-
-/*#component-form-user a {*/
-/*    width: 100%;*/
-/*    max-width: 360px;*/
-/*    height: 30px;*/
-/*    background: var(--primary-color);*/
-/*    border-radius: 8px;*/
-/*    text-decoration: none;*/
-
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    overflow: hidden;*/
-
-/*    margin-top: 20px;*/
-/*}*/
-
-/*#component-form-user a span {*/
-/*    display: block;*/
-/*    background: rgba(0, 0, 0, 0.08);*/
-/*    width: 72px;*/
-/*    height: 72px;*/
-
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    transition: background-color 0.2s;*/
-/*}*/
-
-/*#component-form-user span svg {*/
-/*    color: #FFF;*/
-/*    width: 20px;*/
-/*    height: 20px;*/
-/*}*/
-
-/*#component-form-user a strong {*/
-/*    flex: 1;*/
-/*    text-align: center;*/
-/*    color: #FFF;*/
-/*}*/
-
-/*#component-form-user a:hover {*/
-/*    background: #007d70;*/
-/*}*/
 
 #component-form-user label {
     flex: 1;

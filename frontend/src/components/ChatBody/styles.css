@@ -8,25 +8,57 @@
 
 .component-chat-body #header {
     text-align: center;
-    /*background-color: #FFFFFF;*/
+    background-color: #FFFFFF;
     border-radius: 8px;
+    border-bottom: 5px solid #F0F0F5;
 }
 
 .component-chat-body #body {
-    text-align: center;
     background-color: #FFFFFF;
     border-radius: 8px;
     height: 400px;
+    padding: 20px;
+}
+
+.component-chat-body #body #message {
+    background-color: #F0F0F5;
+    border-radius: 8px;
+    word-break: break-all;
+    /*margin: 10px 10px;*/
+    padding: 10px 10px;
+}
+
+.component-chat-body #body #message div {
+    display: block;
+    text-align: left;
+}
+
+.component-chat-body #body #message span {
+    display: block;
+    text-align: right;
 }
 
 .component-chat-body #footer {
     display: flex;
     align-items: flex-end;
+    border-top: 5px solid #F0F0F5;
+    height: 50px;
 }
 
 .component-chat-body #footer textarea {
     width: 80%;
+    height: 100%;
     border: none;
     border-radius: 8px;
     padding: 10px 16px;
+}
+
+.component-chat-body #footer button {
+    border: 0;
+    border-radius: 8px;
+    margin-left: 10px;
+    background: var(--primary-color);
+    width: 20%;
+    height: 100%;
+
 }
