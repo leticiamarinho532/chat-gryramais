@@ -18,24 +18,7 @@
     border-radius: 8px;
     height: 400px;
     padding: 20px;
-}
-
-.component-chat-body #body #message {
-    background-color: #F0F0F5;
-    border-radius: 8px;
-    word-break: break-all;
-    /*margin: 10px 10px;*/
-    padding: 10px 10px;
-}
-
-.component-chat-body #body #message div {
-    display: block;
-    text-align: left;
-}
-
-.component-chat-body #body #message span {
-    display: block;
-    text-align: right;
+    overflow: auto;
 }
 
 .component-chat-body #footer {
@@ -51,6 +34,7 @@
     border: none;
     border-radius: 8px;
     padding: 10px 16px;
+    resize: none;
 }
 
 .component-chat-body #footer button {

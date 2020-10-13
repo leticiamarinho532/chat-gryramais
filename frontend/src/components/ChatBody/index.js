@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { useQuery } from '@apollo/client';
 import { MESSAGES } from '../../services/apolloClient/query/query';
 
 import './styles.css';
+import MessageBody from "../MessageBody";
 
 const ChatBody = () => {
+    const history = useHistory();
     const userNickname = localStorage.getItem('nickname');
 
     const { loading, error, data } = useQuery(MESSAGES, {
@@ -13,34 +17,45 @@ const ChatBody = () => {
                 nickname: userNickname
             }
         },
-
         variables: {
             page: 1,
             limit: 10
         }
     });
 
+    if (loading) {
+        return <h1>{loading}</h1>;
+    }
+
+    if (error) {
+        // return <p>{error.networkError.result.errors}</p>;
+        console.log(JSON.stringify(error, null, 2));
+    }
+
+    if (!userNickname) {
+        alert('Você precisa fornecer um nickname!');
+        history.push('/');
+    }
+
+    function handleScroll(event) {
+        let element = event.target;
+
+        if (element.scrollHeight + element.scrollTop === element.clientHeight) {
+            return element.scrollTop;
+        }
+    }
+
     return (
         <div className='component-chat-body'>
             <div id='header'>
                 <h2>Chat</h2>
             </div>
-            <div id='body'>
+            <div id='body' onScroll={handleScroll}>
                 {data.messages.map(message => (
-                        <div id='message'>
-                            <div>
-                                {message.content}
-                            </div>
-                            <span>Por: {message.user}</span>
-                        </div>
+                        <MessageBody content={message.content} user={message.user}/>
                     )
                 )}
-                <div id='message'>
-                    <div>
-                       olá
-                    </div>
-                    <span><i>Por: Letícia</i></span>
-                </div>
+                {/*<MessageBody />*/}
             </div>
             <div id='footer'>
                 <textarea placeholder='Digite uma mensagem'></textarea>

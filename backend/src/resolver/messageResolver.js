@@ -12,15 +12,14 @@ module.exports = {
 
             const { page = 1, limit = 20 } = args;
 
-            const messages = await models.message.find({}).limit(limit).skip((page - 1) * limit).lean();;
+            const messages = await models.message
+                .find({}).
+                limit(limit)
+                .skip((page - 1) * limit)
+                .sort({created_at: -1})
+                .lean();
 
-            const count = await models.message.countDocuments(messages);
-
-            return {
-                currentPage: page,
-                totalPages: Math.ceil(count / limit),
-                messages
-            };
+            return messages;
         }
     },
 
@@ -32,25 +31,17 @@ module.exports = {
 
             const { content } = args.SendMessageInput;
 
-            const message = await models.message.create({ content, user: user.nickname, created_at: new Date() });
-
-            // console.log('message: ');
-            // console.log(message);
+            const message = await models.message
+                .create({
+                    content,
+                    user: user.nickname,
+                    created_at: new Date()
+                });
 
             await pubsub.publish(CHAT_CHANNEL, { message: message });
 
             return message;
 
-        },
-
-        loggedInUser: async(parent, args, { user, pubsub }, info) => {
-            await pubsub.publish(USER_CHANNEL, { loggedUser: user });
-
-            return user;
-        },
-
-        loggedOutUser: async(parent, args, { user, pubsub }, info) => {
-            return user;
         }
 
     },
@@ -63,23 +54,6 @@ module.exports = {
                 }
 
                 return pubsub.asyncIterator([CHAT_CHANNEL]);
-            }
-            // subscribe: withFilter((parent, args, { pubsub , user}, info) => pubsub.asyncIterator([CHAT_CHANNEL]),
-            //     (payload, variables) => {
-            //         console.log(variables.nickname);
-            //         return payload.message.user === variables.user;
-            //         },
-            //     ),
-        },
-
-        loggedUser: {
-            subscribe: (parent, args, { pubsub , user }, info) => {
-                if (!user) {
-                    throw new AuthenticationError('Not Authorized');
-                }
-
-                return pubsub.asyncIterator([USER_CHANNEL]);
-
             }
         }
     }
