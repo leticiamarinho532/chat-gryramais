@@ -1,20 +1,16 @@
-const { ApolloServer, AuthenticationError, PubSub } = require('apollo-server');
+const { ApolloServer, gql, PubSub } = require('apollo-server');
 const mongoose = require('mongoose');
 
-const messageSchema = require('./schema/messageSchema');
-const messageResolver = require('./resolver/messageResolver');
-const models = require('./model');
-
-const CHAT_CHANNEL = "CHAT_CHANNEL";
-
-const pubsub = new PubSub();
+const { resolverMessage, typeDefMessage, messageModel } = require('./Message/');
 
 mongoose.connect(
-        'mongodb://root:secret@chat-database:27017/chat?authSource=admin',
+    'mongodb://root:secret@chat-database:27017/chat?authSource=admin',
     { useUnifiedTopology: true, useNewUrlParser: true }
-    )
+)
     .then(() => console.log( 'Database Connected' ))
     .catch(err => console.log( err ));
+
+const pubsub = new PubSub();
 
 const getUser = async (req, connection) => {
 
@@ -27,8 +23,8 @@ const getUser = async (req, connection) => {
 }
 
 const server = new ApolloServer({
-    typeDefs: messageSchema,
-    resolvers: messageResolver,
+    typeDefs: [typeDefMessage],
+    resolvers: resolverMessage,
     context: async ({ req, res, connection }) => {
         if (connection) {
             return {
@@ -38,7 +34,7 @@ const server = new ApolloServer({
         }
 
         return {
-            models,
+            messageModel,
             pubsub,
             user: await getUser(req, connection)
         }
@@ -82,3 +78,4 @@ server
         console.log(`🚀 Server ready at ${url}`);
     })
     .catch(error => console.log("Server failed: ", error));
+
