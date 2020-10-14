@@ -6,8 +6,8 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN npm install
+RUN yarn add
 
 EXPOSE 4000
 
-ENTRYPOINT ["npm", "start"]
+ENTRYPOINT ["yarn", "start"]

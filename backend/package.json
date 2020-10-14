@@ -1,25 +1,18 @@
 {
-  "name": "gyramais",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "start": "nodemon src/index.js",
     "dev": "nodemon src/index.js"
   },
-  "author": "Letícia Marinho",
-  "license": "ISC",
   "devDependencies": {
-    "jest": "^26.5.2",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "apollo-datasource": "^0.7.2",
     "apollo-server": "^2.18.2",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
     "graphql": "^15.3.0",
-    "lodash": "^4.17.20",
-    "mongoose": "^5.10.8"
+    "mongoose": "^5.10.9"
   }
 }

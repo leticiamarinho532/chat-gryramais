@@ -9,9 +9,10 @@ import MessageBody from "../MessageBody";
 
 const ChatBody = () => {
     const history = useHistory();
+    const [page, setPage] = useState(1);
     const userNickname = localStorage.getItem('nickname');
 
-    const { loading, error, data } = useQuery(MESSAGES, {
+    const { loading, error, data, fetchMore } = useQuery(MESSAGES, {
         context: {
             headers: {
                 nickname: userNickname
@@ -22,6 +23,8 @@ const ChatBody = () => {
             limit: 10
         }
     });
+
+    console.log(data);
 
     if (loading) {
         return <h1>{loading}</h1>;
@@ -51,11 +54,11 @@ const ChatBody = () => {
                 <h2>Chat</h2>
             </div>
             <div id='body' onScroll={handleScroll}>
-                {data.messages.map(message => (
+                <button>Carregar mais</button>
+                {data.messages.slice(0).reverse().map(message => (
                         <MessageBody content={message.content} user={message.user}/>
                     )
                 )}
-                {/*<MessageBody />*/}
             </div>
             <div id='footer'>
                 <textarea placeholder='Digite uma mensagem'></textarea>

@@ -21,6 +21,15 @@
     overflow: auto;
 }
 
+.component-chat-body #body button {
+    border: 0;
+    border-radius: 8px;
+    margin-left: 10px;
+    background: var(--primary-color);
+    width: 20%;
+    height: 15%;
+}
+
 .component-chat-body #footer {
     display: flex;
     align-items: flex-end;
