@@ -1,4 +1,4 @@
-const { ApolloServer, gql, PubSub } = require('apollo-server');
+const { ApolloServer, gql, PubSub, AuthenticationError } = require('apollo-server');
 const mongoose = require('mongoose');
 
 const { resolverMessage, typeDefMessage, messageModel } = require('./Message/');
@@ -26,6 +26,8 @@ const server = new ApolloServer({
     typeDefs: [typeDefMessage],
     resolvers: resolverMessage,
     context: async ({ req, res, connection }) => {
+        console.log(connection);
+
         if (connection) {
             return {
                 ...connection.context,

@@ -7,14 +7,14 @@ module.exports = {
                 throw new AuthenticationError('Not Authorized');
             }
 
-            const { page = 1, limit = 20 } = args;
+            // const { page = 1, limit = 20 } = args;
 
             const messages = await messageModel
-                .find({}).
-                limit(limit)
-                .skip((page - 1) * limit)
-                .sort({created_at: -1})
-                .lean();
+                .find({});
+                // .limit(limit)
+                // .skip((page - 1) * limit)
+                // .sort({created_at: -1})
+                // .lean();
 
             return messages;
         }

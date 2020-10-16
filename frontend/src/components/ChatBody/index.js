@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useSubscription } from '@apollo/client';
 import { MESSAGES } from '../../services/apolloClient/query/query';
+import { GETMESSAGESUBSCRIPTION } from '../../services/apolloClient/subscription/get_message_subscription';
 
 import './styles.css';
 import MessageBody from "../MessageBody";
@@ -24,7 +25,15 @@ const ChatBody = () => {
         }
     });
 
-    console.log(data);
+
+    let subscription = useSubscription(GETMESSAGESUBSCRIPTION,{
+        connectionParams: {
+            nickname: localStorage.getItem('nickname')
+        }
+    });
+
+    console.log(JSON.stringify(subscription.error, null, 2));
+
 
     if (loading) {
         return <h1>{loading}</h1>;
@@ -44,8 +53,22 @@ const ChatBody = () => {
         let element = event.target;
 
         if (element.scrollHeight + element.scrollTop === element.clientHeight) {
-            return element.scrollTop;
+            console.log('aqui');
+            return element.scrollTop = element.scrollHeight;
         }
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        // if (nickname.length <= 0) {
+        //     alert('Nickname precisa ser preenchido para ingresso no chat');
+        //     return;
+        // }
+
+        // localStorage.setItem('nickname', nickname);
+        //
+        // return history.push('/chat');
     }
 
     return (
@@ -54,16 +77,15 @@ const ChatBody = () => {
                 <h2>Chat</h2>
             </div>
             <div id='body' onScroll={handleScroll}>
-                <button>Carregar mais</button>
-                {data.messages.slice(0).reverse().map(message => (
+                {data.messages.map(message => (
                         <MessageBody content={message.content} user={message.user}/>
                     )
                 )}
             </div>
-            <div id='footer'>
+            <form id='footer' onSubmit={handleSubmit}>
                 <textarea placeholder='Digite uma mensagem'></textarea>
                 <button>Enviar</button>
-            </div>
+            </form>
         </div>
     )
 }

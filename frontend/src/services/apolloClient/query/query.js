@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const MESSAGES = gql`
-    query messages($page: Int, $limit: Int) {
-        messages(page: $page, limit: $limit) {
+    query messages {
+        messages {
             content,
             user,
             created_at 
