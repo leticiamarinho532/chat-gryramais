@@ -10,38 +10,41 @@ import MessageBody from "../MessageBody";
 
 const ChatBody = () => {
     const history = useHistory();
-    const [page, setPage] = useState(1);
+    const [message, setMessage] = useState([{}]);
     const userNickname = localStorage.getItem('nickname');
 
-    const { loading, error, data, fetchMore } = useQuery(MESSAGES, {
+    const query = useQuery(MESSAGES, {
         context: {
             headers: {
                 nickname: userNickname
             }
-        },
-        variables: {
-            page: 1,
-            limit: 10
         }
     });
 
+    let subscription = useSubscription(GETMESSAGESUBSCRIPTION);
 
-    let subscription = useSubscription(GETMESSAGESUBSCRIPTION,{
-        connectionParams: {
-            nickname: localStorage.getItem('nickname')
+    useEffect(() => {
+        if (!subscription.loading) {
+            setMessage((a) => a.concat([{
+                id: subscription.data.message.id,
+                user: subscription.data.message.user,
+                content: subscription.data.message.content,
+                created_at: subscription.data.message.created_at
+            }]));
+
+            // setMessage(<MessageBody
+            //     key={subscription.data.message.id}
+            //     content={subscription.data.message.content}
+            //     user={subscription.data.message.user}/>
+            //     );
         }
-    });
-
-    console.log(JSON.stringify(subscription.error, null, 2));
+    }, [subscription.data]);
 
 
-    if (loading) {
-        return <h1>{loading}</h1>;
-    }
+    // console.log(JSON.stringify(subscription.error, null, 2));
 
-    if (error) {
-        // return <p>{error.networkError.result.errors}</p>;
-        console.log(JSON.stringify(error, null, 2));
+    if (query.loading) {
+        return <h1>{query.loading}</h1>;
     }
 
     if (!userNickname) {
@@ -53,7 +56,6 @@ const ChatBody = () => {
         let element = event.target;
 
         if (element.scrollHeight + element.scrollTop === element.clientHeight) {
-            console.log('aqui');
             return element.scrollTop = element.scrollHeight;
         }
     }
@@ -61,14 +63,6 @@ const ChatBody = () => {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        // if (nickname.length <= 0) {
-        //     alert('Nickname precisa ser preenchido para ingresso no chat');
-        //     return;
-        // }
-
-        // localStorage.setItem('nickname', nickname);
-        //
-        // return history.push('/chat');
     }
 
     return (
@@ -77,10 +71,17 @@ const ChatBody = () => {
                 <h2>Chat</h2>
             </div>
             <div id='body' onScroll={handleScroll}>
-                {data.messages.map(message => (
-                        <MessageBody content={message.content} user={message.user}/>
-                    )
-                )}
+                {
+                    query.data.messages.map(message => (
+                        <MessageBody key={message.id} content={message.content} user={message.user}/>
+                    ))
+                }
+                {
+                   message.length && message.map(message => (
+                       <MessageBody key={message.id} content={message.content} user={message.user}/>
+                   ))
+                }
+
             </div>
             <form id='footer' onSubmit={handleSubmit}>
                 <textarea placeholder='Digite uma mensagem'></textarea>

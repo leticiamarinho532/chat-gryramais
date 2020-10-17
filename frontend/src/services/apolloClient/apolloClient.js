@@ -1,18 +1,30 @@
-import { ApolloClient, InMemoryCache, split, HttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, split, HttpLink, createHttpLink } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
+import { setContext } from '@apollo/client/link/context';
 
-const httpLink = new HttpLink({
-    uri: 'http://localhost:4000/'
+const httpLink = createHttpLink({
+    uri: 'http://localhost:4000/',
+});
+
+const authLink = setContext((_, { headers }) => {
+    const nickname = localStorage.getItem('nickname');
+
+    return {
+        headers: {
+            ...headers,
+            nickname: nickname,
+        }
+    }
 });
 
 const wsLink = new WebSocketLink({
     uri: `ws://localhost:4000/graphql`,
     options: {
+        connectionParams: {
+            nickname: localStorage.getItem('nickname')
+        },
         reconnect: true
-    },
-    connectionParams: {
-        nickname: localStorage.getItem('nickname')
     }
 });
 
@@ -30,6 +42,7 @@ const splitLink = split(
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/',
+    link: splitLink,
     cache: new InMemoryCache()
 });
 

@@ -15,7 +15,7 @@ const pubsub = new PubSub();
 const getUser = async (req, connection) => {
 
     if (!req.headers.nickname) {
-        throw new AuthenticationError('Not Autorized');
+        throw new AuthenticationError('glauber');
     }
 
     return req.headers;
@@ -26,7 +26,7 @@ const server = new ApolloServer({
     typeDefs: [typeDefMessage],
     resolvers: resolverMessage,
     context: async ({ req, res, connection }) => {
-        console.log(connection);
+        // console.log(connection);
 
         if (connection) {
             return {
@@ -42,10 +42,10 @@ const server = new ApolloServer({
         }
     },
     subscriptions: {
-        onConnect: async (connectionParams, webSocket) => {
+        onConnect: async (connectionParams, webSocket, context) => {
 
             if (!connectionParams.nickname) {
-                throw new AuthenticationError('Not Autorized');
+                throw new AuthenticationError('Not Authorized');
             }
 
             const message = {
