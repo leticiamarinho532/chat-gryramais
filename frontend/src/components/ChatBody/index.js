@@ -16,7 +16,16 @@ const ChatBody = () => {
     const [content, setContent] = useState();
     const [message, setMessage] = useState([]);
     const [user, setUser] = useState([]);
+    const [addMessage] = useMutation(MESSAGESMUTATION);
+    let message_subscription = useSubscription(GETMESSAGESUBSCRIPTION);
+    let user_subscription = useSubscription(GETUSERSUBSCRIPTION);
+
     const userNickname = localStorage.getItem('nickname');
+
+    if (!userNickname) {
+        alert('Você precisa fornecer um nickname!');
+        history.push('/');
+    }
 
     const query = useQuery(MESSAGES, {
         context: {
@@ -25,8 +34,6 @@ const ChatBody = () => {
             }
         }
     });
-
-    let message_subscription = useSubscription(GETMESSAGESUBSCRIPTION);
 
     useEffect(() => {
         if (!message_subscription.loading) {
@@ -39,7 +46,6 @@ const ChatBody = () => {
         }
     }, [message_subscription.data]);
 
-    let user_subscription = useSubscription(GETUSERSUBSCRIPTION);
 
     useEffect(() => {
         if (!user_subscription.loading && !user_subscription.error) {
@@ -49,19 +55,6 @@ const ChatBody = () => {
             }]));
         }
     }, [user_subscription.data]);
-
-    const [addMessage, { error}] = useMutation(MESSAGESMUTATION);
-
-    console.log(JSON.stringify(error, null, 2));
-
-    if (query.loading) {
-        return <h1>{query.loading}</h1>;
-    }
-
-    if (!userNickname) {
-        alert('Você precisa fornecer um nickname!');
-        history.push('/');
-    }
 
     function handleScroll(event) {
         let element = event.target;
@@ -101,7 +94,7 @@ const ChatBody = () => {
             </div>
             <div id='body' onScroll={handleScroll}>
                 {
-                    query.data.messages.map(message => (
+                    !query.loading && query.data.messages.map(message => (
                         <MessageBody key={message.id} content={message.content} user={message.user}/>
                     ))
                 }
