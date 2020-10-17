@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useQuery, useSubscription } from '@apollo/client';
+import { useQuery, useMutation , useSubscription } from '@apollo/client';
 import { MESSAGES } from '../../services/apolloClient/query/query';
+import { MESSAGESMUTATION } from '../../services/apolloClient/mutation/mutation';
 import { GETMESSAGESUBSCRIPTION } from '../../services/apolloClient/subscription/get_message_subscription';
+import { GETUSERSUBSCRIPTION } from '../../services/apolloClient/subscription/get_user_subscription';
 
 import './styles.css';
 import MessageBody from "../MessageBody";
+import UserMessageLogin from '../UserMessageLogin';
 
 const ChatBody = () => {
     const history = useHistory();
-    const [message, setMessage] = useState([{}]);
+    const [content, setContent] = useState();
+    const [message, setMessage] = useState([]);
+    const [user, setUser] = useState([]);
     const userNickname = localStorage.getItem('nickname');
 
     const query = useQuery(MESSAGES, {
@@ -21,27 +26,33 @@ const ChatBody = () => {
         }
     });
 
-    let subscription = useSubscription(GETMESSAGESUBSCRIPTION);
+    let message_subscription = useSubscription(GETMESSAGESUBSCRIPTION);
 
     useEffect(() => {
-        if (!subscription.loading) {
+        if (!message_subscription.loading) {
             setMessage((a) => a.concat([{
-                id: subscription.data.message.id,
-                user: subscription.data.message.user,
-                content: subscription.data.message.content,
-                created_at: subscription.data.message.created_at
+                id: message_subscription.data.message.id,
+                user: message_subscription.data.message.user,
+                content: message_subscription.data.message.content,
+                created_at: message_subscription.data.message.created_at
             }]));
-
-            // setMessage(<MessageBody
-            //     key={subscription.data.message.id}
-            //     content={subscription.data.message.content}
-            //     user={subscription.data.message.user}/>
-            //     );
         }
-    }, [subscription.data]);
+    }, [message_subscription.data]);
 
+    let user_subscription = useSubscription(GETUSERSUBSCRIPTION);
 
-    // console.log(JSON.stringify(subscription.error, null, 2));
+    useEffect(() => {
+        if (!user_subscription.loading && !user_subscription.error) {
+            setUser((a) => a.concat([{
+                user: user_subscription.data.message.user,
+                event: user_subscription.data.message.event
+            }]));
+        }
+    }, [user_subscription.data]);
+
+    const [addMessage, { error}] = useMutation(MESSAGESMUTATION);
+
+    console.log(JSON.stringify(error, null, 2));
 
     if (query.loading) {
         return <h1>{query.loading}</h1>;
@@ -63,6 +74,24 @@ const ChatBody = () => {
     async function handleSubmit(event) {
         event.preventDefault();
 
+        try {
+            await addMessage({
+                context: {
+                    headers: {
+                        nickname: userNickname
+                    }
+                },
+                variables: {
+                    content: content
+                }
+            })
+
+            setContent('');
+        } catch (error) {
+            alert('Ocorreu um erro ao mandar a mensagem');
+            console.log(error);
+        }
+
     }
 
     return (
@@ -77,14 +106,22 @@ const ChatBody = () => {
                     ))
                 }
                 {
-                   message.length && message.map(message => (
+                   message.length > 0 && message.map(message => (
                        <MessageBody key={message.id} content={message.content} user={message.user}/>
                    ))
                 }
-
+                {
+                    user.length > 0 && user.map(user => (
+                        <UserMessageLogin key={user.user} user={user.user} event={user.event}/>
+                    ))
+                }
             </div>
             <form id='footer' onSubmit={handleSubmit}>
-                <textarea placeholder='Digite uma mensagem'></textarea>
+                <textarea
+                    onChange={event => setContent(event.target.value)}
+                    placeholder='Digite uma mensagem'
+                    value={content}
+                />
                 <button>Enviar</button>
             </form>
         </div>

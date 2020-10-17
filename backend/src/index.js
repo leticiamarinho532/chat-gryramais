@@ -15,7 +15,7 @@ const pubsub = new PubSub();
 const getUser = async (req, connection) => {
 
     if (!req.headers.nickname) {
-        throw new AuthenticationError('glauber');
+        throw new AuthenticationError('Not Authorized');
     }
 
     return req.headers;
@@ -64,7 +64,7 @@ const server = new ApolloServer({
             const user = await context.initPromise;
 
             const message = {
-                event: 'UsserloggeOut',
+                event: 'UserloggedOut',
                 user: user.user
             }
 
